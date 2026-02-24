@@ -5,7 +5,6 @@ import { Canvas } from '@react-three/fiber'
 import Astronaut from '../components/Astronaut.jsx'
 import { Float,  OrbitControls } from '@react-three/drei'
 import { useMediaQuery } from 'react-responsive'
-import Loader from '../components/Loader.jsx'
 
 const Hero = () => {
     const isMobile = useMediaQuery({maxWidth:853});
@@ -18,11 +17,9 @@ const Hero = () => {
         style={{width:"100vw",height:"100vh"}}
         >
             <Canvas camera={{position:[0,1,3]}}>
-                <Suspense fallback={<Loader/>}>
                 <Float> 
                 <Astronaut scale={isMobile && 0.23} position={isMobile && [0,-1.5,0]}/>
                 </Float>
-                </Suspense>
             </Canvas>
         </figure>
     </section>
