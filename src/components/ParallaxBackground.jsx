@@ -58,14 +58,14 @@ const ParallaxBackground = () => {
 
 
 
-        <motion.div className='absolute inset-0 w-full h-screen -z-10'
+        {/* <motion.div className='absolute inset-0 w-full h-screen -z-10'
           style={{
             backgroundImage:"url(/assets/mountain-1.png)",
             backgroundPosition:"bottom",
             backgroundSize:"cover",
             y: mountain1Y
         }}>  
-        </motion.div>
+        </motion.div> */}
 
     </div>
     </section>
