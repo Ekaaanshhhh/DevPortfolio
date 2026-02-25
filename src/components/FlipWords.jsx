@@ -1,6 +1,6 @@
 "use client";
 import React, { useCallback, useEffect, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { motion, AnimatePresence } from "framer-motion";
 import { twMerge } from "tailwind-merge";
 
 export const FlipWords = ({
