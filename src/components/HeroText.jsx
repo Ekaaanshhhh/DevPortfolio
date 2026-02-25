@@ -40,7 +40,7 @@ const HeroText = () => {
             <p className='text-5xl font-black text-neutral-300 '>Building</p>
             <div>
                 <FlipWords className='font-bold text-7xl text-white'
-                words = {["Secure","Mordern","Scalable"]}/>
+                words = {["Secure","Modern","Scalable"]}/>
             </div>
             <p className='text-4xl font-black text-neutral-300'>Web Solutions</p>
         </div>
