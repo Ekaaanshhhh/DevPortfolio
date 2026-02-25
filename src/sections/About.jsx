@@ -33,7 +33,7 @@ export default function AboutSection() {
   };
 
   return (
-    <section className="relative py-24 md:py-28 bg-gradient-to-b from-[#050816] via-[#060b1f] to-[#050816] overflow-hidden">
+    <section className="relative py-24 md:py-28 bg-gradient-to-b from-[#050816] via-[#060b1f] to-[#050816] overflow-hidden" id="about">
 
       {/* Animated background glow */}
       <motion.div

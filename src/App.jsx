@@ -8,7 +8,7 @@ import SkillsSection from './sections/SkillsSection.jsx'
 
 const App = () => {
   return (
-    <div className='container mx-auto max-w-7xl '>
+    <div>
       <Navbar/>
       <Hero/>
       <About/>

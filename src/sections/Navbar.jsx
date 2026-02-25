@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'motion/react';
+import { Link } from 'react-router-dom';
 
 function Navigation(){
     return <ul className='nav-ul '>
