@@ -78,7 +78,7 @@ export default function AboutSection() {
               viewport={{ once: true }}
               className="text-gray-400 text-lg leading-relaxed"
             >
-              I’m an Electronics and Communication Engineering undergraduate with a strong
+              I’m an Electronics and Communication Engineering undergraduate from National Institute of Technology, Patna with a strong
               foundation in problem solving and full-stack development.
               I enjoy building modern, scalable web applications and continuously strengthening
               my understanding of data structures, algorithms, and system design.
@@ -96,6 +96,30 @@ export default function AboutSection() {
               MongoDB, Firebase, and Supabase. I focus on writing clean, maintainable code
               and building products that are both performant and user-centric.
             </motion.p>
+            <motion.a
+            href="https://drive.google.com/file/d/14RgOTnUIn5cpigWzOwyHxr_nJ4PSUg7r/view?usp=drive_link"
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.6 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-3 mt-10
+            px-6 py-3
+            bg-gradient-to-r from-purple-500/20 to-cyan-400/20
+            border border-white/10
+            rounded-xl
+            text-white font-medium
+            backdrop-blur-md
+            hover:from-purple-500/30 hover:to-cyan-400/30
+            hover:shadow-[0_0_25px_rgba(168,85,247,0.35)]
+            transition-all duration-300"
+          >
+            View Resume
+            <span className="text-lg">↗</span>
+          </motion.a>
 
           </div>
 

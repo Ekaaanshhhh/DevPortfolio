@@ -6,6 +6,10 @@ export default function ContactSection() {
   const [isMobile, setIsMobile] = useState(false);
   const cardRef = useRef(null);
 
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
   // Detect mobile
   useEffect(() => {
     const handleResize = () => {
@@ -16,7 +20,6 @@ export default function ContactSection() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Smooth springs
   const springX = useSpring(rotate.x, { stiffness: 180, damping: 18 });
   const springY = useSpring(rotate.y, { stiffness: 180, damping: 18 });
 
@@ -27,8 +30,8 @@ export default function ContactSection() {
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
-    const rotateY = ((x / rect.width) - 0.5) * 25; 
-    const rotateX = ((y / rect.height) - 0.5) * -25;
+    const rotateY = ((x / rect.width) - 0.5) * 20;
+    const rotateX = ((y / rect.height) - 0.5) * -20;
 
     setRotate({ x: rotateX, y: rotateY });
   };
@@ -73,110 +76,81 @@ export default function ContactSection() {
               ? {
                   rotateX: springX,
                   rotateY: springY,
-                  transformPerspective: 1200,
+                  transformPerspective: 1400,
                 }
               : {}
           }
           initial={{ opacity: 0, y: 80 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: "easeOut" }}
+          transition={{ duration: 0.9 }}
           viewport={{ once: true }}
-          className="
-            relative
-            bg-white/5
-            backdrop-blur-xl
-            border border-white/10
-            p-10 md:p-12
-            rounded-3xl
-            shadow-[0_30px_80px_rgba(0,0,0,0.6)]
-            transition-transform
-            duration-200
-          "
+          className="relative bg-white/5 backdrop-blur-xl border border-white/10 
+          p-10 md:p-12 rounded-3xl shadow-[0_30px_80px_rgba(0,0,0,0.6)]"
         >
-          {/* Inner light gradient */}
-          <div
-            className="absolute inset-0 rounded-3xl pointer-events-none
-            bg-gradient-to-br 
-            from-purple-500/10 
-            via-transparent 
-            to-cyan-400/10
-            opacity-40"
-          />
-
           <form className="space-y-10 relative z-10">
-            {/* Name */}
-            <div>
-              <label className="block text-sm text-gray-400 mb-3">
-                Name
-              </label>
-              <input
-                type="text"
-                placeholder="Your name"
-                className="w-full bg-[#0b1120]
-                border border-white/10
-                rounded-xl
-                px-5 py-4
-                text-white
-                placeholder-gray-500
-                focus:outline-none
-                focus:border-purple-500/40
-                focus:ring-2
-                focus:ring-purple-500/20
-                transition"
-              />
-            </div>
 
-            {/* Email */}
-            <div>
-              <label className="block text-sm text-gray-400 mb-3">
-                Email
-              </label>
-              <input
-                type="email"
-                placeholder="you@example.com"
-                className="w-full bg-[#0b1120]
-                border border-white/10
-                rounded-xl
-                px-5 py-4
-                text-white
-                placeholder-gray-500
-                focus:outline-none
-                focus:border-cyan-400/40
-                focus:ring-2
-                focus:ring-cyan-400/20
-                transition"
-              />
-            </div>
+            {/* Floating Input Component */}
+            {[
+              { label: "Name", value: name, setter: setName, type: "text" },
+              { label: "Email", value: email, setter: setEmail, type: "email" },
+            ].map((field, index) => (
+              <div key={index} className="relative">
+                <input
+                  type={field.type}
+                  value={field.value}
+                  onChange={(e) => field.setter(e.target.value)}
+                  placeholder=" "
+                  className="peer w-full bg-[#0b1120] border border-white/10
+                  rounded-xl px-5 pt-6 pb-3 text-white
+                  focus:outline-none focus:border-purple-500/40
+                  focus:ring-2 focus:ring-purple-500/20 transition"
+                />
+                <label
+                  className="absolute left-5 top-3 text-gray-400 text-sm
+                  transition-all duration-200
+                  peer-placeholder-shown:top-4
+                  peer-placeholder-shown:text-base
+                  peer-placeholder-shown:text-gray-500
+                  peer-focus:top-3
+                  peer-focus:text-sm
+                  peer-focus:text-purple-400"
+                >
+                  {field.label}
+                </label>
+              </div>
+            ))}
 
             {/* Message */}
-            <div>
-              <label className="block text-sm text-gray-400 mb-3">
+            <div className="relative">
+              <textarea
+                rows="5"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                placeholder=" "
+                className="peer w-full bg-[#0b1120] border border-white/10
+                rounded-xl px-5 pt-6 pb-3 text-white resize-none
+                focus:outline-none focus:border-pink-500/40
+                focus:ring-2 focus:ring-pink-500/20 transition"
+              />
+              <label
+                className="absolute left-5 top-3 text-gray-400 text-sm
+                transition-all duration-200
+                peer-placeholder-shown:top-4
+                peer-placeholder-shown:text-base
+                peer-placeholder-shown:text-gray-500
+                peer-focus:top-3
+                peer-focus:text-sm
+                peer-focus:text-pink-400"
+              >
                 Message
               </label>
-              <textarea
-                rows="6"
-                placeholder="Let's build something impactful."
-                className="w-full bg-[#0b1120]
-                border border-white/10
-                rounded-xl
-                px-5 py-4
-                text-white
-                placeholder-gray-500
-                focus:outline-none
-                focus:border-pink-500/40
-                focus:ring-2
-                focus:ring-pink-500/20
-                transition
-                resize-none"
-              />
             </div>
 
             {/* Button */}
             <button
               type="submit"
               className="w-full py-4 rounded-xl
-              bg-[#0b1120]
-              border border-white/10
+              bg-[#0b1120] border border-white/10
               text-white font-medium tracking-wide
               transition-all duration-300
               hover:border-purple-500/40
@@ -185,6 +159,37 @@ export default function ContactSection() {
             >
               Send Message
             </button>
+
+            {/* Social Links */}
+            <div className="pt-6 border-t border-white/10 flex justify-center gap-6 text-sm text-gray-400">
+              <a
+                href="https://www.instagram.com/ekaa_nshhhh/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-pink-400 transition"
+              >
+                Instagram
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/ekansh-satsangi-154b40350/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-blue-400 transition"
+              >
+                LinkedIn
+              </a>
+
+              <a
+                href="https://github.com/Ekaaanshhhh"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-purple-400 transition"
+              >
+                GitHub
+              </a>
+            </div>
+
           </form>
         </motion.div>
       </div>
