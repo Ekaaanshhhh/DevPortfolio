@@ -6,10 +6,12 @@ import AchievementSection from './sections/AchievementSection.jsx'
 import ContactSection from './sections/ContactSection.jsx'
 import SkillsSection from './sections/SkillsSection.jsx'
 import WorkSection from './sections/WorkSection.jsx'
+import { Toaster } from 'react-hot-toast'
 
 const App = () => {
   return (
     <div>
+      <Toaster/>
       <Navbar/>
       <Hero/>
       <About/>

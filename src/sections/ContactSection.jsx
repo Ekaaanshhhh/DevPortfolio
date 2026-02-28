@@ -1,5 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, useSpring } from "framer-motion";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 export default function ContactSection() {
   const [rotate, setRotate] = useState({ x: 0, y: 0 });
@@ -9,6 +11,8 @@ export default function ContactSection() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+
+  const [loading, setLoading] = useState(false);
 
   // Detect mobile
   useEffect(() => {
@@ -30,14 +34,47 @@ export default function ContactSection() {
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
-    const rotateY = ((x / rect.width) - 0.5) * 20;
-    const rotateX = ((y / rect.height) - 0.5) * -20;
+    const rotateY = (x / rect.width - 0.5) * 20;
+    const rotateX = (y / rect.height - 0.5) * -20;
 
     setRotate({ x: rotateX, y: rotateY });
   };
 
   const handleMouseLeave = () => {
     setRotate({ x: 0, y: 0 });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!name || !email || !message) {
+      toast.error("Please fill in all fields");
+      return;
+    }
+
+    try {
+      setLoading(true);
+
+      await axios.post(
+      `${import.meta.env.VITE_API_URL}/send`,
+      {
+        name,
+        email,
+        message,
+      }
+    );
+
+      toast.success("Message sent successfully 🚀");
+
+      setName("");
+      setEmail("");
+      setMessage("");
+    } catch (error) {
+      console.error("Error sending message:", error);
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -87,9 +124,8 @@ export default function ContactSection() {
           className="relative bg-white/5 backdrop-blur-xl border border-white/10 
           p-10 md:p-12 rounded-3xl shadow-[0_30px_80px_rgba(0,0,0,0.6)]"
         >
-          <form className="space-y-10 relative z-10">
+          <form onSubmit={handleSubmit} className="space-y-10 relative z-10">
 
-            {/* Floating Input Component */}
             {[
               { label: "Name", value: name, setter: setName, type: "text" },
               { label: "Email", value: email, setter: setEmail, type: "email" },
@@ -120,7 +156,6 @@ export default function ContactSection() {
               </div>
             ))}
 
-            {/* Message */}
             <div className="relative">
               <textarea
                 rows="5"
@@ -146,21 +181,21 @@ export default function ContactSection() {
               </label>
             </div>
 
-            {/* Button */}
             <button
               type="submit"
+              disabled={loading}
               className="w-full py-4 rounded-xl
               bg-[#0b1120] border border-white/10
               text-white font-medium tracking-wide
               transition-all duration-300
               hover:border-purple-500/40
               hover:bg-[#111827]
-              hover:shadow-[0_0_25px_rgba(168,85,247,0.25)]"
+              hover:shadow-[0_0_25px_rgba(168,85,247,0.25)]
+              disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Send Message
+              {loading ? "Sending..." : "Send Message"}
             </button>
 
-            {/* Social Links */}
             <div className="pt-6 border-t border-white/10 flex justify-center gap-6 text-sm text-gray-400">
               <a
                 href="https://www.instagram.com/ekaa_nshhhh/"
