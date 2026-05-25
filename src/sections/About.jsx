@@ -97,16 +97,16 @@ export default function AboutSection() {
               and building products that are both performant and user-centric.
             </motion.p>
             <motion.a
-            href="https://drive.google.com/file/d/14RgOTnUIn5cpigWzOwyHxr_nJ4PSUg7r/view?usp=drive_link"
-            target="_blank"
-            rel="noopener noreferrer"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.6 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-3 mt-10
+              href="https://drive.google.com/file/d/13y1JfdFgFwuzfaxIFFPzaJZqQp60yzok/view?usp=drive_link"
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.6 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-3 mt-10
             px-6 py-3
             bg-gradient-to-r from-purple-500/20 to-cyan-400/20
             border border-white/10
@@ -116,10 +116,10 @@ export default function AboutSection() {
             hover:from-purple-500/30 hover:to-cyan-400/30
             hover:shadow-[0_0_25px_rgba(168,85,247,0.35)]
             transition-all duration-300"
-          >
-            View Resume
-            <span className="text-lg">↗</span>
-          </motion.a>
+            >
+              View Resume
+              <span className="text-lg">↗</span>
+            </motion.a>
 
           </div>
 
@@ -135,8 +135,8 @@ export default function AboutSection() {
             style={
               !isMobile
                 ? {
-                    transform: `perspective(1000px) rotateX(${rotate.x}deg) rotateY(${rotate.y}deg)`
-                  }
+                  transform: `perspective(1000px) rotateX(${rotate.x}deg) rotateY(${rotate.y}deg)`
+                }
                 : {}
             }
             className="relative flex justify-center"
