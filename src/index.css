@@ -29,13 +29,13 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--sans);
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.6;
   overflow-x: hidden;
 }
 
 .container {
-  max-width: 920px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 32px;
 }
@@ -82,7 +82,7 @@ body {
 }
 
 .body-text {
-  font-size: 15px;
+  font-size: 16px;
   color: var(--text2);
   line-height: 1.85;
 }
@@ -111,8 +111,8 @@ body {
 /* ABOUT — photo integrated */
 .about-layout {
   display: grid;
-  grid-template-columns: 1fr 380px;
-  gap: 64px;
+  grid-template-columns: 1fr 420px;
+  gap: 80px;
   align-items: start;
 }
 
@@ -236,7 +236,7 @@ body {
 /* EXPERIENCE */
 .exp-item {
   display: grid;
-  grid-template-columns: 200px 1fr;
+  grid-template-columns: 240px 1fr;
   gap: 48px;
   padding: 48px 0;
   border-bottom: 1px solid var(--border);
@@ -276,10 +276,10 @@ body {
 }
 
 .exp-desc {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text2);
   line-height: 1.8;
-  max-width: 480px;
+  max-width: 600px;
 }
 
 .exp-tags {
@@ -300,8 +300,8 @@ body {
 /* TECH STACK */
 .stack-layout {
   display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 80px;
+  grid-template-columns: 240px 1fr;
+  gap: 100px;
 }
 
 .stack-nav-item {
@@ -444,10 +444,10 @@ body {
 }
 
 .proj-desc {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text2);
   line-height: 1.75;
-  max-width: 480px;
+  max-width: 600px;
   margin-bottom: 16px;
 }
 
@@ -518,7 +518,7 @@ body {
 .contact-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  gap: 120px;
   align-items: start;
 }
 
