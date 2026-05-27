@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from './sections/Navbar.jsx'
-import Hero from "./sections/Hero.jsx"
 import About from './sections/About.jsx'
+import Experience from './sections/Experience.jsx'
 import AchievementSection from './sections/AchievementSection.jsx'
 import ContactSection from './sections/ContactSection.jsx'
 import SkillsSection from './sections/SkillsSection.jsx'
@@ -13,8 +13,8 @@ const App = () => {
     <div>
       <Toaster/>
       <Navbar/>
-      <Hero/>
       <About/>
+      <Experience/>
       <SkillsSection/>
       <AchievementSection/>
       <WorkSection/>

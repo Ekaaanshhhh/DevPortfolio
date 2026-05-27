@@ -1,107 +1,122 @@
+import React from "react";
 import { motion } from "framer-motion";
-import {
-  FaReact,
-  FaNodeJs,
-  FaGitAlt,
-  FaGithub,
-  FaJava,
-  FaPython,
-  FaHtml5,
-  FaCss3Alt
-} from "react-icons/fa";
 
-import {
-  SiJavascript,
-  SiTypescript,
-  SiMongodb,
-  SiExpress,
-  SiTailwindcss,
-  SiFirebase,
-  SiSupabase,
-  SiRedux,
-  SiVite,
-  SiNextdotjs,
-  SiPostman,
-  SiMysql
-} from "react-icons/si";
+export default function SkillsSection() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  };
 
-const skills = [
-  { icon: <FaReact />, name: "React" },
-  { icon: <SiNextdotjs />, name: "Next.js" },
-  { icon: <SiJavascript />, name: "JavaScript" },
-  { icon: <SiTypescript />, name: "TypeScript" },
-  { icon: <FaNodeJs />, name: "Node.js" },
-  { icon: <SiExpress />, name: "Express" },
-  { icon: <SiMongodb />, name: "MongoDB" },
-  { icon: <SiMysql />, name: "MySQL" },
-  { icon: <SiFirebase />, name: "Firebase" },
-  { icon: <SiSupabase />, name: "Supabase" },
-  { icon: <SiRedux />, name: "Redux" },
-  { icon: <SiTailwindcss />, name: "TailwindCSS" },
-  { icon: <SiVite />, name: "Vite" },
-  { icon: <FaGitAlt />, name: "Git" },
-  { icon: <FaGithub />, name: "GitHub" },
-  { icon: <SiPostman />, name: "Postman" },
-  { icon: <FaJava />, name: "Java" },
-  { icon: <FaPython />, name: "Python" },
-  { icon: <FaHtml5 />, name: "HTML5" },
-  { icon: <FaCss3Alt />, name: "CSS3" },
-];
-
-export default function SkillsMarquee() {
-  const duplicatedSkills = [...skills, ...skills];
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
 
   return (
-    <section className="relative py-20 overflow-hidden">
-
-      <div className="max-w-6xl mx-auto px-6">
-
-        <h3 className="text-2xl font-semibold text-white mb-10">
+    <section className="section" id="tech-stack">
+      <div className="container">
+        <motion.div 
+          className="eyebrow"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.5 }}
+        >
           Tech Stack
-        </h3>
-
-        <div className="relative w-full overflow-hidden">
-
-          {/* Fade Edges */}
-          <div className="absolute left-0 top-0 h-full w-24 bg-gradient-to-r from-[#050816] to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 h-full w-24 bg-gradient-to-l from-[#050816] to-transparent z-10 pointer-events-none" />
-
+        </motion.div>
+        
+        <motion.div 
+          className="display" 
+          style={{ fontSize: "48px", marginBottom: "56px" }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
+          Tools of<br /><em>the Craft.</em>
+        </motion.div>
+        
+        <div className="stack-layout">
           <motion.div
-            className="flex gap-6 w-max"
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{
-              repeat: Infinity,
-              repeatType: "loop",
-              ease: "linear",
-              duration: 35, // slower = premium feel
-            }}
-            whileHover={{ animationPlayState: "paused" }}
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
           >
-            {duplicatedSkills.map((skill, index) => (
-              <div
-                key={index}
-                className="flex items-center gap-3
-                bg-white/5 backdrop-blur-lg border border-white/10
-                px-6 py-3 rounded-full
-                text-gray-300
-                whitespace-nowrap
-                hover:border-purple-500/40
-                hover:shadow-[0_0_15px_rgba(168,85,247,0.2)]
-                hover:scale-105
-                transition-all duration-300"
-              >
-                <div className="text-lg">
-                  {skill.icon}
-                </div>
-                <span className="text-sm font-medium">
-                  {skill.name}
-                </span>
-              </div>
-            ))}
+            <div className="stack-nav-item active">Languages</div>
+            <div className="stack-nav-item">Frameworks</div>
+            <div className="stack-nav-item">Databases</div>
+            <div className="stack-nav-item">Security</div>
           </motion.div>
-
+          
+          <motion.div 
+            className="stack-groups"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+          >
+            <motion.div variants={itemVariants}>
+              <div className="stack-group-title">Languages</div>
+              <div className="stack-pills">
+                <span className="stack-pill">JavaScript</span>
+                <span className="stack-pill">TypeScript</span>
+                <span className="stack-pill">Java</span>
+                <span className="stack-pill">Python</span>
+                <span className="stack-pill">C</span>
+                <span className="stack-pill">HTML</span>
+                <span className="stack-pill">CSS</span>
+              </div>
+            </motion.div>
+            
+            <motion.div variants={itemVariants}>
+              <div className="stack-group-title">Frameworks &amp; Libraries</div>
+              <div className="stack-pills">
+                <span className="stack-pill">React.js</span>
+                <span className="stack-pill">Node.js</span>
+                <span className="stack-pill">Express.js</span>
+                <span className="stack-pill">NumPy</span>
+                <span className="stack-pill">Pandas</span>
+                <span className="stack-pill">Seaborn</span>
+                <span className="stack-pill">Tailwind CSS</span>
+                <span className="stack-pill">Zustand</span>
+                <span className="stack-pill">Shadcn/ui</span>
+                <span className="stack-pill">Three.js</span>
+                <span className="stack-pill">Framer Motion</span>
+              </div>
+            </motion.div>
+            
+            <motion.div variants={itemVariants}>
+              <div className="stack-group-title">Databases &amp; Cloud</div>
+              <div className="stack-pills">
+                <span className="stack-pill">MongoDB</span>
+                <span className="stack-pill">Firebase</span>
+                <span className="stack-pill">MySQL</span>
+                <span className="stack-pill">Supabase</span>
+                <span className="stack-pill">Appwrite</span>
+                <span className="stack-pill">GCP</span>
+              </div>
+            </motion.div>
+            
+            <motion.div variants={itemVariants}>
+              <div className="stack-group-title">Security &amp; Tools</div>
+              <div className="stack-pills">
+                <span className="stack-pill">JWT</span>
+                <span className="stack-pill">bcrypt</span>
+                <span className="stack-pill">RBAC</span>
+                <span className="stack-pill">REST APIs</span>
+                <span className="stack-pill">Git</span>
+                <span className="stack-pill">Postman</span>
+                <span className="stack-pill">Clerk</span>
+              </div>
+            </motion.div>
+          </motion.div>
         </div>
-
       </div>
     </section>
   );

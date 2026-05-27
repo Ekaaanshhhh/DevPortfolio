@@ -1,189 +1,125 @@
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
-import { useRef } from "react";
-import { ArrowUpRight } from "lucide-react";
-
-const achievements = [
-  {
-    title: "Qualified JEE Advanced 2024",
-    description: "Among 1.4M+ candidates nationwide",
-    impact:
-      "Demonstrated strong problem-solving ability and performance under extreme national-level competition.",
-  },
-  {
-    title: "98.5 Percentile in JEE Mains 2023",
-    description: "Top 1.5% in India",
-    impact:
-      "Ranked in the top percentile nationally, reflecting academic rigor and consistency.",
-  },
-  {
-    title: "AlgoUniversity Technology Fellowship (ATF 2025)",
-    description: "Top 8% Nationwide",
-    impact:
-      "Selected among high-performing engineers through a competitive evaluation process.",
-  },
-  {
-    title: "ISC Class 12 – 93.5%",
-    description: "Council for the Indian School Certificate Examinations",
-    impact:
-      "Strong academic foundation across mathematics, physics, and computer science.",
-  },
-  {
-    title: "ICSE Class 10 – 97.4%",
-    description: "Council for the Indian School Certificate Examinations",
-    impact:
-      "Demonstrated early academic excellence and disciplined preparation.",
-  },
-  {
-    title: "Solved 200+ DSA Problems",
-    description: "LeetCode • CodeChef • GFG",
-    impact:
-      "Built strong foundations in data structures and algorithms for technical interviews.",
-    link: "https://leetcode.com/u/Ekanshflyfly/",
-  },
-];
+import React from "react";
+import { motion } from "framer-motion";
 
 export default function AchievementSection() {
-  const ref = useRef(null);
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
 
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start 80%", "end 20%"],
-  });
-
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 120,
-    damping: 25,
-    mass: 0.6,
-  });
-
-  const lightPosition = useTransform(
-    smoothProgress,
-    [0, 1],
-    ["0%", "98%"]
-  );
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
 
   return (
-    <section
-      ref={ref}
-      className="relative py-20 bg-[#050816] overflow-hidden"
-    >
-      {/* Ambient radial glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.15),transparent_70%)]" />
+    <section className="section" id="achievements">
+      <div className="container">
+        <motion.div 
+          className="eyebrow"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.5 }}
+        >
+          Achievements
+        </motion.div>
+        
+        <motion.div 
+          className="display" 
+          style={{ fontSize: "48px", marginBottom: "48px" }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
+          A Record of<br /><em>Excellence.</em>
+        </motion.div>
+        
+        <motion.div 
+          className="ach-grid"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          <motion.div className="ach-card featured" variants={itemVariants}>
+            <div className="ach-index">01 — Academic</div>
+            <div className="ach-title">Qualified JEE Advanced 2024</div>
+            <div className="ach-sub">Among 1.8M+ candidates</div>
+            <div className="ach-desc">
+              Demonstrated strong analytical problem-solving under extreme national-level competition.
+            </div>
+          </motion.div>
 
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-14">
-          <h2 className="text-4xl md:text-5xl font-bold text-white">
-            Achievements
-          </h2>
-        </div>
+          <motion.div className="ach-card featured" variants={itemVariants}>
+            <div className="ach-index">02 — Academic</div>
+            <div className="ach-title">98.5 Percentile — JEE Mains 2023</div>
+            <div className="ach-sub">Top 1.5% in India</div>
+            <div className="ach-desc">
+              Ranked in the top percentile nationally across mathematics, physics, and chemistry.
+            </div>
+          </motion.div>
 
-        <div className="relative">
+          <motion.div className="ach-card" variants={itemVariants}>
+            <div className="ach-index">03 — Fellowship</div>
+            <div className="ach-title">AlgoUniversity Technology Fellowship</div>
+            <div className="ach-sub">ATF 2025 · Top 8% Nationwide</div>
+            <div className="ach-desc">
+              Stage 2 Candidate — selected through competitive evaluation in DSA &amp; software engineering.
+            </div>
+          </motion.div>
 
-          {/* Base faint line */}
-          <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[2px] h-full bg-white/10" />
+          <motion.div className="ach-card featured" style={{ background: "var(--bg3)" }} variants={itemVariants}>
+            <div className="ach-index">04 — Athletics</div>
+            <div className="ach-title">Badminton Gold — Tatva Sports Fest</div>
+            <div className="ach-sub" style={{ color: "var(--gold2)" }}>Gold Medal · NIT Patna</div>
+            <div className="ach-desc">
+              Won gold in badminton at Tatva, NIT Patna's annual sports fest — competitive spirit beyond the screen.
+            </div>
+          </motion.div>
 
-          {/* Outer glow aura */}
-          <motion.div
-            style={{ scaleY: smoothProgress }}
-            className="origin-top absolute left-1/2 top-0 -translate-x-1/2
-            w-[10px] h-full
-            bg-gradient-to-b from-purple-500/20 via-cyan-400/20 to-pink-500/20
-            blur-xl"
-          />
+          <motion.div className="ach-card" variants={itemVariants}>
+            <div className="ach-index">05 — Engineering</div>
+            <div className="ach-title">300+ DSA Problems Solved</div>
+            <div className="ach-sub">LeetCode · CodeChef · GFG</div>
+            <div className="ach-desc">
+              Strong command of data structures and algorithms in Java, built for technical interviews at scale.
+            </div>
+          </motion.div>
 
-          {/* Main animated beam */}
-          <motion.div
-            style={{ scaleY: smoothProgress }}
-            className="origin-top absolute left-1/2 top-0 -translate-x-1/2
-            w-[4px] h-full rounded-full
-            bg-gradient-to-b from-purple-500 via-cyan-400 to-pink-500
-            shadow-[0_0_30px_rgba(168,85,247,0.9)]"
-          />
+          <motion.div className="ach-card" variants={itemVariants}>
+            <div className="ach-index">06 — Cloud</div>
+            <div className="ach-title">20+ Google Cloud Skill Badges</div>
+            <div className="ach-sub">Google Cloud Study Jams</div>
+            <div className="ach-desc">
+              Hands-on GCP experience across infrastructure, data platforms, AI/ML, and cloud services.
+            </div>
+          </motion.div>
 
-          {/* Traveling glow (soft outer) */}
-          <motion.div
-            style={{ top: lightPosition }}
-            className="absolute left-1/2 -translate-x-1/2
-            w-10 h-10 rounded-full
-            bg-gradient-to-r from-purple-500 via-cyan-400 to-pink-500
-            blur-2xl opacity-70 pointer-events-none"
-          />
+          <motion.div className="ach-card" variants={itemVariants}>
+            <div className="ach-index">07 — Academic</div>
+            <div className="ach-title">ISC Class 12 — 93.5%</div>
+            <div className="ach-sub">CISCE</div>
+            <div className="ach-desc">
+              Strong foundation in mathematics, physics, and computer science.
+            </div>
+          </motion.div>
 
-          {/* Traveling glow core */}
-          <motion.div
-            style={{ top: lightPosition }}
-            className="absolute left-1/2 -translate-x-1/2
-            w-4 h-4 rounded-full bg-white
-            shadow-[0_0_25px_rgba(168,85,247,1)]
-            pointer-events-none"
-          />
-
-          {achievements.map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              viewport={{ once: true, margin: "-80px" }}
-              className={`relative flex items-center mb-10 ${
-                index % 2 === 0 ? "justify-start" : "justify-end"
-              }`}
-            >
-              {/* Card */}
-              <div
-                className="w-[48%] bg-white/5 backdrop-blur-xl border border-white/10
-                p-7 rounded-2xl shadow-2xl
-                hover:scale-[1.02] transition duration-300
-                hover:shadow-[0_0_40px_rgba(168,85,247,0.25)]"
-              >
-                <div className="flex items-start justify-between">
-                  <h3 className="text-xl font-semibold text-white">
-                    {item.title}
-                  </h3>
-
-                  {item.link && (
-                    <a
-                      href={item.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-purple-400 hover:text-cyan-400 transition duration-300
-                      hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(168,85,247,0.8)]"
-                    >
-                      <ArrowUpRight size={20} />
-                    </a>
-                  )}
-                </div>
-
-                <p className="text-purple-300 mt-2 text-sm">
-                  {item.description}
-                </p>
-
-                <p className="text-gray-400 mt-4 text-sm leading-relaxed">
-                  {item.impact}
-                </p>
-
-                {/* {item.link && (
-                  <p className="text-xs text-gray-500 mt-2">
-                    View Profile
-                  </p>
-                )} */}
-              </div>
-
-              {/* Timeline node */}
-              <motion.div
-                className="absolute left-1/2 -translate-x-1/2
-                w-6 h-6 rounded-full
-                bg-gradient-to-r from-purple-500 to-cyan-400"
-                whileInView={{
-                  boxShadow:
-                    "0px 0px 25px rgba(168,85,247,0.9), 0px 0px 45px rgba(6,182,212,0.6)",
-                  scale: 1.15,
-                }}
-                transition={{ duration: 0.4 }}
-              />
-            </motion.div>
-          ))}
-        </div>
+          <motion.div className="ach-card" variants={itemVariants}>
+            <div className="ach-index">08 — Academic</div>
+            <div className="ach-title">ICSE Class 10 — 97.4%</div>
+            <div className="ach-sub">CISCE</div>
+            <div className="ach-desc">
+              Early academic excellence with disciplined and consistent preparation.
+            </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
