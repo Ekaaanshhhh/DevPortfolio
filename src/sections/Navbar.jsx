@@ -58,7 +58,7 @@ const Navbar = () => {
 
   return (
     <div className="fixed inset-x-0 top-0 z-50 w-full" style={navContainerStyle}>
-      <div className="container" style={{ padding: "0 32px", maxWidth: "1200px", margin: "0 auto" }}>
+      <div className="container" style={{ padding: "0 40px", maxWidth: "1600px", margin: "0 auto" }}>
         <div className="flex items-center justify-between py-5">
           
           {/* Logo */}

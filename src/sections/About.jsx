@@ -63,7 +63,7 @@ export default function AboutSection() {
 
         <motion.div 
           className="stat-strip" 
-          style={{ gridTemplateColumns: "repeat(4, 1fr)", marginTop: "24px" }}
+          style={{ marginTop: "24px" }}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
