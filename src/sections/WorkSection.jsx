@@ -74,22 +74,23 @@ export default function WorkSection() {
           <motion.div className="proj-item" variants={itemVariants}>
             <div>
               <div className="proj-no">02</div>
-              <div className="proj-name">SecureAuth — Industry-Grade MERN Auth</div>
+              <div className="proj-name">ReelOps — AI Content Publishing Platform</div>
               <p className="proj-desc">
-                Production-ready auth system with JWT, bcrypt, RBAC, and Nodemailer email workflows on a scalable MongoDB backend.
+                Production-grade SaaS automating YouTube publishing via Google Data API. Features a fault-tolerant job scheduler, AES-encrypted OAuth tokens, live WebSocket streaming, and Groq AI metadata generation.
               </p>
               <div className="proj-tech">
-                <span className="proj-tech-tag">MongoDB</span>
-                <span className="proj-tech-tag">Express.js</span>
                 <span className="proj-tech-tag">React.js</span>
-                <span className="proj-tech-tag">JWT</span>
+                <span className="proj-tech-tag">Node.js</span>
+                <span className="proj-tech-tag">MongoDB</span>
+                <span className="proj-tech-tag">GCP</span>
+                <span className="proj-tech-tag">Docker</span>
               </div>
             </div>
             <div className="proj-status-col">
-              <span className="proj-badge ongoing">Ongoing</span>
+              <span className="proj-badge live">Live</span>
               <div className="proj-links-col">
-                <a className="proj-link" href="#" target="_blank" rel="noreferrer">GitHub ↗</a>
-                <a className="proj-link" href="#" target="_blank" rel="noreferrer">Live ↗</a>
+                <a className="proj-link" href="https://github.com/Ekaaanshhhh/ReelOps" target="_blank" rel="noreferrer">GitHub ↗</a>
+                <a className="proj-link" href="https://reel-ops.vercel.app/" target="_blank" rel="noreferrer">Live ↗</a>
               </div>
             </div>
           </motion.div>
