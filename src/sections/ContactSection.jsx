@@ -49,7 +49,7 @@ export default function ContactSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.4 }}
           >
             Contact
           </motion.div>
@@ -60,7 +60,7 @@ export default function ContactSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
           >
             Let's Build<br /><em>Together.</em>
           </motion.div>
@@ -70,7 +70,7 @@ export default function ContactSection() {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.7, delay: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
             >
               <p className="body-text" style={{ marginBottom: "32px" }}>
                 Open to internships, collaborations, and interesting engineering problems. If you have something worth building, let's talk.
@@ -101,7 +101,7 @@ export default function ContactSection() {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.7, delay: 0.4 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
             >
               <form onSubmit={handleSubmit}>
                 <div className="form-group">
@@ -139,7 +139,7 @@ export default function ContactSection() {
                   ></textarea>
                 </div>
                 <button type="submit" className="form-btn" disabled={loading}>
-                  {loading ? "Sending..." : "Send Message"} <span style={{ fontStyle: "normal", fontFamily: "var(--sans)", fontSize: "14px" }}>→</span>
+                  {loading ? "Sending..." : "Send Message"} <span style={{ fontFamily: "var(--sans)", fontSize: "18px" }}>→</span>
                 </button>
               </form>
             </motion.div>
@@ -152,7 +152,7 @@ export default function ContactSection() {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 1, delay: 0.5 }}
+        transition={{ duration: 0.8, delay: 0.3 }}
       >
         <div className="footer-bar">
           <div className="footer-name">Ekansh Satsangi</div>

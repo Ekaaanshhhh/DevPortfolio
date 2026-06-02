@@ -14,7 +14,7 @@ export default function WorkSection() {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
 
   return (
@@ -25,7 +25,7 @@ export default function WorkSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.4 }}
         >
           Work
         </motion.div>
@@ -36,7 +36,7 @@ export default function WorkSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.5, delay: 0.1 }}
+          transition={{ duration: 0.4, delay: 0.1 }}
         >
           Featured<br /><em>Projects.</em>
         </motion.div>
@@ -98,9 +98,9 @@ export default function WorkSection() {
           <motion.div className="proj-item" variants={itemVariants}>
             <div>
               <div className="proj-no">03</div>
-              <div className="proj-name">DevPortfolio — Elegant Minimalist Portfolio</div>
+              <div className="proj-name">DevPortfolio — Neo-Brutalist Portfolio</div>
               <p className="proj-desc">
-                A highly refined, typography-driven personal portfolio featuring sophisticated serif aesthetics, perfectly balanced grid layouts, and fluid Framer Motion scroll animations designed to deliver a premium user experience.
+                A bold, neo-brutalism personal portfolio featuring thick borders, hard box-shadows, vivid accents, and snappy Framer Motion animations — designed to stand out and make a statement.
               </p>
               <div className="proj-tech">
                 <span className="proj-tech-tag">React.js</span>
@@ -118,10 +118,10 @@ export default function WorkSection() {
             </div>
           </motion.div>
           
-          <motion.div className="proj-item" style={{ opacity: 0.4 }} variants={itemVariants}>
+          <motion.div className="proj-item" style={{ opacity: 0.5 }} variants={itemVariants}>
             <div>
               <div className="proj-no">04</div>
-              <div className="proj-name" style={{ fontStyle: "italic", color: "var(--text2)" }}>
+              <div className="proj-name" style={{ color: "var(--text3)" }}>
                 More projects coming soon
               </div>
               <p className="proj-desc">Something new is being built. Watch this space.</p>

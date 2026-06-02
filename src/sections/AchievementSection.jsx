@@ -14,7 +14,7 @@ export default function AchievementSection() {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
   };
 
   return (
@@ -25,7 +25,7 @@ export default function AchievementSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.4 }}
         >
           Achievements
         </motion.div>
@@ -36,7 +36,7 @@ export default function AchievementSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.5, delay: 0.1 }}
+          transition={{ duration: 0.4, delay: 0.1 }}
         >
           A Record of<br /><em>Excellence.</em>
         </motion.div>
@@ -75,10 +75,10 @@ export default function AchievementSection() {
             </div>
           </motion.div>
 
-          <motion.div className="ach-card featured" style={{ background: "var(--bg3)" }} variants={itemVariants}>
+          <motion.div className="ach-card featured" variants={itemVariants} style={{ background: "var(--bg3)" }}>
             <div className="ach-index">04 — Athletics</div>
             <div className="ach-title">Badminton Gold — Tatva Sports Fest</div>
-            <div className="ach-sub" style={{ color: "var(--gold2)" }}>Gold Medal · NIT Patna</div>
+            <div className="ach-sub" style={{ color: "var(--accent)" }}>Gold Medal · NIT Patna</div>
             <div className="ach-desc">
               Won gold in badminton at Tatva, NIT Patna's annual sports fest — competitive spirit beyond the screen.
             </div>
