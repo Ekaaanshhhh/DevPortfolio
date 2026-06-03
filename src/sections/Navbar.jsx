@@ -98,7 +98,7 @@ function Navbar() {
       {["About", "Experience", "Work", "Certs", "Contact"].map((item) => (
         <a
           key={item}
-          href={`#${item.toLowerCase()}`}
+          href={`#${item === "Certs" ? "certifications" : item.toLowerCase()}`}
           style={navLinkStyle}
           onMouseEnter={handleHover}
           onMouseLeave={handleLeave}
