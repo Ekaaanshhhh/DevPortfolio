@@ -1,1 +1,2 @@
-export const API_URL = "http://localhost:8000/api/chat";
+export const API_URL =
+  import.meta.env.VITE_CHATBOT_API_URL;
