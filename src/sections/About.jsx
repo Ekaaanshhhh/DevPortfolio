@@ -68,7 +68,7 @@ function TypingHeading() {
   );
 }
 
-export default function AboutSection({ onOpenLittleE }) {
+export default function AboutSection({ onOpenEko }) {
   return (
     <section className="section" id="about" style={{ paddingTop: "140px" }}>
       <div className="container">
@@ -94,10 +94,10 @@ export default function AboutSection({ onOpenLittleE }) {
               <TypingHeading />
               <div className="xl:mt-0 xl:mb-8">
                 <button 
-                  onClick={onOpenLittleE}
+                  onClick={onOpenEko}
                   className="inline-flex items-center gap-3 px-8 py-4 bg-[var(--accent)] border-[length:var(--border-w)] border-[var(--border)] text-[var(--white)] font-bold font-mono text-[16px] uppercase tracking-widest transition-all duration-300 shadow-[var(--shadow)] hover:translate-x-[-3px] hover:translate-y-[-3px] hover:shadow-[10px_10px_0px_var(--border)]" 
                 >
-                  <span>Meet LITTLE-E</span>
+                  <span>Meet EKO</span>
                   <span className="text-2xl animate-pulse">✨</span>
                 </button>
               </div>

@@ -11,7 +11,7 @@ const SUGGESTIONS = [
   "Why should I hire Ekansh?",
 ];
 
-export default function LittleEModal({ isOpen, onClose }) {
+export default function EkoModal({ isOpen, onClose }) {
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [isThinking, setIsThinking] = useState(false);
@@ -83,7 +83,7 @@ export default function LittleEModal({ isOpen, onClose }) {
         {/* Header */}
         <header className="flex items-center justify-between p-4 border-b-[length:var(--border-w)] border-[var(--border)] bg-[var(--bg2)]">
           <div className="flex items-center gap-3 font-mono font-bold uppercase tracking-wider text-[var(--text)] text-[14px]">
-            LITTLE-E <span className="flex h-3 w-3 bg-green-500 border-2 border-black"></span>
+            EKO <span className="flex h-3 w-3 bg-green-500 border-2 border-black"></span>
           </div>
           <button 
             onClick={onClose}
@@ -104,7 +104,7 @@ export default function LittleEModal({ isOpen, onClose }) {
               <div className="w-24 h-24 md:w-28 md:h-28 mb-6">
                 <RobotMascot />
               </div>
-              <h1 className="text-3xl md:text-5xl font-bold mb-4 font-sans text-[var(--text)]">Hi, I'm LittleE</h1>
+              <h1 className="text-3xl md:text-5xl font-bold mb-4 font-sans text-[var(--text)]">Hi, I'm Eko</h1>
               <p className="text-[var(--text2)] text-base md:text-lg mb-10 max-w-xl border-l-[length:var(--border-w)] border-[var(--accent)] pl-4 bg-[var(--bg2)] py-3 px-4 shadow-[var(--shadow-sm)] text-left font-sans">
                 Ekansh's personal AI assistant. <br/><br/> I can tell you about his projects, experience, technical skills, achievements, and software engineering journey.
               </p>

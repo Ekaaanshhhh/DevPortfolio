@@ -9,24 +9,31 @@ import ContactSection from './sections/ContactSection.jsx'
 import SkillsSection from './sections/SkillsSection.jsx'
 import WorkSection from './sections/WorkSection.jsx'
 import { Toaster } from 'react-hot-toast'
-import LittleEModal from './components/LittleEModal.jsx'
+import EkoModal from './components/EkoModal.jsx'
 
 const App = () => {
-  const [isLittleEOpen, setIsLittleEOpen] = useState(false)
+  const [isEkoOpen, setIsEkoOpen] = useState(false)
 
   return (
     <ThemeProvider>
       <div>
         <Toaster/>
         <Navbar/>
-        <About onOpenLittleE={() => setIsLittleEOpen(true)} />
+        <About onOpenEko={() => setIsEkoOpen(true)} />
         <Experience/>
         <SkillsSection/>
         <AchievementSection/>
         <CertificationsSection/>
         <WorkSection/>
         <ContactSection/>
-        <LittleEModal isOpen={isLittleEOpen} onClose={() => setIsLittleEOpen(false)} />
+        {/* Floating Action Button for Eko */}
+        <button
+          onClick={() => setIsEkoOpen(true)}
+          className="fixed bottom-6 right-6 z-[60] flex items-center gap-2 px-5 py-3 bg-[var(--accent2)] border-2 border-[var(--border)] text-[#1a1a1a] shadow-[var(--shadow)] font-mono font-bold uppercase tracking-wider hover:-translate-y-1 hover:shadow-[6px_6px_0px_var(--border)] transition-all"
+        >
+          <span className="animate-pulse">✨</span> Meet Eko
+        </button>
+        <EkoModal isOpen={isEkoOpen} onClose={() => setIsEkoOpen(false)} />
       </div>
     </ThemeProvider>
   )
