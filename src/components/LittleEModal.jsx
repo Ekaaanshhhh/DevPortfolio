@@ -62,7 +62,7 @@ export default function LittleEModal({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-2 sm:p-4 md:p-12">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-12">
       {/* Glassmorphic Backdrop overlay */}
       <motion.div 
         initial={{ opacity: 0 }}
@@ -78,11 +78,11 @@ export default function LittleEModal({ isOpen, onClose }) {
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: 20, scale: 0.95 }}
         transition={{ type: "spring", stiffness: 300, damping: 25 }}
-        className="relative w-full max-w-4xl h-full max-h-[95vh] md:max-h-[85vh] bg-[var(--bg)] border-[length:var(--border-w)] border-[var(--border)] shadow-[var(--shadow-lg)] flex flex-col font-sans overflow-hidden"
+        className="relative w-[92%] sm:w-[95%] max-w-4xl h-full max-h-[90vh] md:max-h-[85vh] bg-[var(--bg)] border-[length:var(--border-w)] border-[var(--border)] shadow-[var(--shadow-lg)] flex flex-col font-sans overflow-hidden mx-auto"
       >
         {/* Header */}
-        <header className="flex items-center justify-between p-3 md:p-4 border-b-[length:var(--border-w)] border-[var(--border)] bg-[var(--bg2)]">
-          <div className="flex items-center gap-3 font-mono font-bold uppercase tracking-wider text-[var(--text)] text-[13px] md:text-[14px]">
+        <header className="flex items-center justify-between p-4 border-b-[length:var(--border-w)] border-[var(--border)] bg-[var(--bg2)]">
+          <div className="flex items-center gap-3 font-mono font-bold uppercase tracking-wider text-[var(--text)] text-[14px]">
             LITTLE-E <span className="flex h-3 w-3 bg-green-500 border-2 border-black"></span>
           </div>
           <button 
@@ -109,12 +109,12 @@ export default function LittleEModal({ isOpen, onClose }) {
                 Ekansh's personal AI assistant. <br/><br/> I can tell you about his projects, experience, technical skills, achievements, and software engineering journey.
               </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 w-full max-w-2xl">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-2xl">
                 {SUGGESTIONS.map((s, i) => (
                   <button
                     key={i}
                     onClick={() => handleSend(s)}
-                    className="text-left px-4 py-3 md:px-5 md:py-4 bg-[var(--bg2)] border-[length:var(--border-w)] border-[var(--border)] shadow-[var(--shadow-sm)] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_var(--accent2)] transition-all font-mono font-bold text-[12px] md:text-[13px] text-[var(--text)]"
+                    className="text-left px-5 py-4 bg-[var(--bg2)] border-[length:var(--border-w)] border-[var(--border)] shadow-[var(--shadow-sm)] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_var(--accent2)] transition-all font-mono font-bold text-[13px] text-[var(--text)]"
                   >
                     {s}
                   </button>
@@ -137,7 +137,7 @@ export default function LittleEModal({ isOpen, onClose }) {
                       </div>
                     )}
                     <div 
-                      className={`max-w-[90%] md:max-w-[75%] px-4 md:px-6 py-3 md:py-4 text-[15px] md:text-[16px] border-[length:var(--border-w)] border-[var(--border)] text-left ${
+                      className={`max-w-[90%] md:max-w-[75%] px-6 py-4 text-[16px] border-[length:var(--border-w)] border-[var(--border)] text-left ${
                         m.role === "user" 
                           ? "bg-[var(--accent2)] text-[#1a1a1a] shadow-[var(--shadow-sm)]" 
                           : "bg-[var(--bg2)] text-[var(--text)] shadow-[var(--shadow-sm)]"
@@ -146,10 +146,10 @@ export default function LittleEModal({ isOpen, onClose }) {
                       <p className="whitespace-pre-wrap font-sans leading-relaxed font-medium break-words">{m.content}</p>
                       {m.sources && m.sources.length > 0 && (
                         <div className="mt-4 pt-4 border-t-[length:var(--border-w)] border-[var(--border)] flex flex-col gap-2">
-                          <span className="text-[10px] md:text-[11px] font-mono font-bold uppercase tracking-widest text-[var(--text2)]">Sources</span>
+                          <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-[var(--text2)]">Sources</span>
                           <div className="flex flex-wrap gap-2">
                             {m.sources.map((src, i) => (
-                              <span key={i} className="text-[11px] md:text-[12px] font-mono font-bold px-2 py-1 bg-[var(--bg)] border-2 border-[var(--border)] text-[var(--text)]">
+                              <span key={i} className="text-[12px] font-mono font-bold px-2 py-1 bg-[var(--bg)] border-2 border-[var(--border)] text-[var(--text)]">
                                 {src}
                               </span>
                             ))}
@@ -196,14 +196,14 @@ export default function LittleEModal({ isOpen, onClose }) {
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               placeholder="Ask me anything..."
-              className="w-full bg-[var(--bg)] border-[length:var(--border-w)] border-[var(--border)] shadow-[var(--shadow-sm)] px-4 py-3 md:px-5 md:py-4 font-sans text-[15px] md:text-[16px] text-[var(--text)] focus:outline-none focus:translate-x-[-2px] focus:translate-y-[-2px] focus:shadow-[6px_6px_0px_var(--border)] transition-all placeholder-[var(--text2)]"
+              className="w-full bg-[var(--bg)] border-[length:var(--border-w)] border-[var(--border)] shadow-[var(--shadow-sm)] px-5 py-4 md:px-6 md:py-5 font-sans text-[16px] md:text-[18px] text-[var(--text)] focus:outline-none focus:translate-x-[-2px] focus:translate-y-[-2px] focus:shadow-[6px_6px_0px_var(--border)] transition-all placeholder-[var(--text2)]"
             />
             <button
               type="submit"
               disabled={!inputValue.trim() || isThinking}
-              className="absolute right-2 md:right-3 p-2 md:p-2 bg-[var(--accent)] border-2 border-[var(--border)] text-[#1a1a1a] hover:bg-[var(--accent2)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="absolute right-2 md:right-3 p-2.5 md:p-3 bg-[var(--accent)] border-2 border-[var(--border)] text-[#1a1a1a] hover:bg-[var(--accent2)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <ArrowUp size={20} strokeWidth={3} />
+              <ArrowUp size={24} strokeWidth={3} />
             </button>
           </form>
         </div>
