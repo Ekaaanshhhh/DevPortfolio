@@ -109,7 +109,7 @@ export default function AboutSection({ onOpenEko }) {
             </p>
             <div className="mt-12 mb-12">
               <a 
-                href="https://drive.google.com/file/d/1DyjFFHSFVIMa2NWJ_EyEbWtk9SGAkVeh/view?usp=drive_link"
+                href="https://drive.google.com/file/d/1t-67uz1LBtPmqZD2E95NmMoPhBigPL4M/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 px-8 py-4 bg-[var(--bg2)] border-[length:var(--border-w)] border-[var(--border)] text-[var(--text)] font-bold font-mono text-[16px] uppercase tracking-widest transition-all duration-300 shadow-[var(--shadow-sm)] hover:translate-x-[-3px] hover:translate-y-[-3px] hover:shadow-[10px_10px_0px_var(--accent2)] hover:bg-[var(--accent2)] hover:text-[#1a1a1a]"
