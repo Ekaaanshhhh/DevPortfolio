@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { ThemeProvider } from './ThemeContext.jsx'
 import Navbar from './sections/Navbar.jsx'
 import About from './sections/About.jsx'
@@ -10,12 +10,26 @@ import SkillsSection from './sections/SkillsSection.jsx'
 import WorkSection from './sections/WorkSection.jsx'
 import { Toaster } from 'react-hot-toast'
 import EkoModal from './components/EkoModal.jsx'
+import Loader from './components/Loader.jsx'
+import { AnimatePresence } from 'framer-motion'
 
 const App = () => {
   const [isEkoOpen, setIsEkoOpen] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    if (isLoading) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isLoading]);
 
   return (
     <ThemeProvider>
+      <AnimatePresence>
+        {isLoading && <Loader key="loader" onComplete={() => setIsLoading(false)} />}
+      </AnimatePresence>
       <div>
         <Toaster/>
         <Navbar/>

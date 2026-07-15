@@ -51,29 +51,6 @@ export default function WorkSection() {
           <motion.div className="proj-item" variants={itemVariants}>
             <div>
               <div className="proj-no">01</div>
-              <div className="proj-name">Civix — Civic Issue Reporting Platform</div>
-              <p className="proj-desc">
-                Full-stack web app for real-time civic issue reporting with photo uploads, status tracking, and role-based workflows. Secured 9th at TechSprint by GDG, NIT Patna 2026.
-              </p>
-              <div className="proj-tech">
-                <span className="proj-tech-tag">React.js</span>
-                <span className="proj-tech-tag">Firebase</span>
-                <span className="proj-tech-tag">Firestore</span>
-                <span className="proj-tech-tag">RBAC</span>
-              </div>
-            </div>
-            <div className="proj-status-col">
-              <span className="proj-badge live">Live</span>
-              <div className="proj-links-col">
-                <a className="proj-link" href="https://github.com/shristi482004/Civix" target="_blank" rel="noreferrer">GitHub ↗</a>
-                <a className="proj-link" href="https://civix-7f8d2.web.app/" target="_blank" rel="noreferrer">Live ↗</a>
-              </div>
-            </div>
-          </motion.div>
-          
-          <motion.div className="proj-item" variants={itemVariants}>
-            <div>
-              <div className="proj-no">02</div>
               <div className="proj-name">ReelOps — AI Content Publishing Platform</div>
               <p className="proj-desc">
                 Production-grade SaaS automating YouTube publishing via Google Data API. Features a fault-tolerant job scheduler, AES-encrypted OAuth tokens, live WebSocket streaming, and Groq AI metadata generation.
@@ -91,6 +68,29 @@ export default function WorkSection() {
               <div className="proj-links-col">
                 <a className="proj-link" href="https://github.com/Ekaaanshhhh/ReelOps" target="_blank" rel="noreferrer">GitHub ↗</a>
                 <a className="proj-link" href="https://reel-ops.vercel.app/" target="_blank" rel="noreferrer">Live ↗</a>
+              </div>
+            </div>
+          </motion.div>
+          
+          <motion.div className="proj-item" variants={itemVariants}>
+            <div>
+              <div className="proj-no">02</div>
+              <div className="proj-name">Civix — Civic Issue Reporting Platform</div>
+              <p className="proj-desc">
+                Full-stack web app for real-time civic issue reporting with photo uploads, status tracking, and role-based workflows. Secured 9th at TechSprint by GDG, NIT Patna 2026.
+              </p>
+              <div className="proj-tech">
+                <span className="proj-tech-tag">React.js</span>
+                <span className="proj-tech-tag">Firebase</span>
+                <span className="proj-tech-tag">Firestore</span>
+                <span className="proj-tech-tag">RBAC</span>
+              </div>
+            </div>
+            <div className="proj-status-col">
+              <span className="proj-badge live">Live</span>
+              <div className="proj-links-col">
+                <a className="proj-link" href="https://github.com/shristi482004/Civix" target="_blank" rel="noreferrer">GitHub ↗</a>
+                <a className="proj-link" href="https://civix-7f8d2.web.app/" target="_blank" rel="noreferrer">Live ↗</a>
               </div>
             </div>
           </motion.div>

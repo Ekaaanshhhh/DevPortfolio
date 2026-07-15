@@ -2,19 +2,22 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
 function TypingHeading() {
-  const fullText = "Full-Stack";
-  const subText = "Developer.";
-  const [displayedMain, setDisplayedMain] = useState("");
-  const [displayedSub, setDisplayedSub] = useState("");
-  const [phase, setPhase] = useState("waiting"); // waiting | typing-main | typing-sub | done
+  const phrases = [
+    { main: "Full Stack", sub: "Developer." },
+    { main: "Software", sub: "Engineer." },
+    { main: "Generative", sub: "AI." }
+  ];
+  const [index, setIndex] = useState(0);
+  const [mainText, setMainText] = useState("");
+  const [subText, setSubText] = useState("");
+  const [phase, setPhase] = useState("waiting");
   const ref = useRef(null);
 
-  // Start typing when element scrolls into view
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && phase === "waiting") {
-          setPhase("typing-main");
+          setPhase("typeMain");
         }
       },
       { threshold: 0.3 }
@@ -23,46 +26,52 @@ function TypingHeading() {
     return () => observer.disconnect();
   }, [phase]);
 
-  // Type main text
   useEffect(() => {
-    if (phase !== "typing-main") return;
-    if (displayedMain.length < fullText.length) {
-      const timeout = setTimeout(() => {
-        setDisplayedMain(fullText.slice(0, displayedMain.length + 1));
-      }, 80);
-      return () => clearTimeout(timeout);
-    } else {
-      // Small pause before typing sub text
-      const pause = setTimeout(() => setPhase("typing-sub"), 200);
-      return () => clearTimeout(pause);
-    }
-  }, [phase, displayedMain]);
+    if (phase === "waiting") return;
 
-  // Type sub text
-  useEffect(() => {
-    if (phase !== "typing-sub") return;
-    if (displayedSub.length < subText.length) {
-      const timeout = setTimeout(() => {
-        setDisplayedSub(subText.slice(0, displayedSub.length + 1));
-      }, 80);
-      return () => clearTimeout(timeout);
-    } else {
-      setPhase("done");
+    const current = phrases[index];
+    let timeout;
+
+    if (phase === "pause") {
+      timeout = setTimeout(() => setPhase("delSub"), 1500);
+    } else if (phase === "typeMain") {
+      if (mainText.length < current.main.length) {
+        timeout = setTimeout(() => setMainText(current.main.slice(0, mainText.length + 1)), 80);
+      } else {
+        timeout = setTimeout(() => setPhase("typeSub"), 150);
+      }
+    } else if (phase === "typeSub") {
+      if (subText.length < current.sub.length) {
+        timeout = setTimeout(() => setSubText(current.sub.slice(0, subText.length + 1)), 80);
+      } else {
+        setPhase("pause");
+      }
+    } else if (phase === "delSub") {
+      if (subText.length > 0) {
+        timeout = setTimeout(() => setSubText(current.sub.slice(0, subText.length - 1)), 30);
+      } else {
+        setPhase("delMain");
+      }
+    } else if (phase === "delMain") {
+      if (mainText.length > 0) {
+        timeout = setTimeout(() => setMainText(current.main.slice(0, mainText.length - 1)), 30);
+      } else {
+        setIndex((prev) => (prev + 1) % phrases.length);
+        setPhase("typeMain");
+      }
     }
-  }, [phase, displayedSub]);
+
+    return () => clearTimeout(timeout);
+  }, [phase, mainText, subText, index]);
 
   return (
-    <h2 ref={ref} className="display" style={{ fontSize: "60px", minHeight: "140px" }}>
-      {displayedMain}
-      {phase === "waiting" && <span className="typing-cursor" />}
-      {phase === "typing-main" && <span className="typing-cursor" />}
-      
-      {displayedMain.length === fullText.length && <br />}
+    <h2 ref={ref} className="display" style={{ fontSize: "60px", minHeight: "150px", lineHeight: "1.2", paddingTop: "8px" }}>
+      {mainText}
+      {(phase === "waiting" || phase === "typeMain" || phase === "delMain") && <span className="typing-cursor" />}
+      {mainText.length === phrases[index].main.length && <br />}
       <em>
-        {displayedSub}
-        {(phase === "typing-sub" || phase === "done") && (
-          <span className="typing-cursor" />
-        )}
+        {subText}
+        {(phase === "typeSub" || phase === "pause" || phase === "delSub") && <span className="typing-cursor" />}
       </em>
     </h2>
   );
@@ -92,15 +101,7 @@ export default function AboutSection({ onOpenEko }) {
           >
             <div className="flex flex-col xl:flex-row xl:items-center xl:justify-start gap-6 xl:gap-12 relative w-full">
               <TypingHeading />
-              <div className="xl:mt-0 xl:mb-8">
-                <button 
-                  onClick={onOpenEko}
-                  className="inline-flex items-center gap-3 px-8 py-4 bg-[var(--accent)] border-[length:var(--border-w)] border-[var(--border)] text-[var(--white)] font-bold font-mono text-[16px] uppercase tracking-widest transition-all duration-300 shadow-[var(--shadow)] hover:translate-x-[-3px] hover:translate-y-[-3px] hover:shadow-[10px_10px_0px_var(--border)]" 
-                >
-                  <span>Meet EKO</span>
-                  <span className="text-2xl animate-pulse">✨</span>
-                </button>
-              </div>
+
             </div>
             <div className="rule"></div>
             <p className="body-text">
@@ -121,13 +122,12 @@ export default function AboutSection({ onOpenEko }) {
               "I build systems that are secure by design, not by accident."
             </p>
             <div className="tag-list">
-              <span className="tag accent">React.js</span>
               <span className="tag accent">Node.js</span>
+              <span className="tag accent">React.js</span>
               <span className="tag accent">MongoDB</span>
-              <span className="tag">Firebase</span>
-              <span className="tag">JWT / bcrypt</span>
-              <span className="tag">RBAC</span>
-              <span className="tag">TypeScript</span>
+              <span className="tag">PostgreSQL</span>
+              <span className="tag">LangChain</span>
+              <span className="tag">Hugging Face</span>
             </div>
           </motion.div>
 
@@ -157,11 +157,11 @@ export default function AboutSection({ onOpenEko }) {
           transition={{ duration: 0.5, delay: 0.6 }}
         >
           <div className="stat-cell">
-            <div className="stat-n">8.6</div>
+            <div className="stat-n">8.56</div>
             <div className="stat-l">CGPA · NIT Patna</div>
           </div>
           <div className="stat-cell">
-            <div className="stat-n">300+</div>
+            <div className="stat-n">500+</div>
             <div className="stat-l">DSA Problems</div>
           </div>
           <div className="stat-cell">

@@ -86,7 +86,7 @@ export default function AchievementSection() {
 
           <motion.div className="ach-card" variants={itemVariants}>
             <div className="ach-index">05 — Engineering</div>
-            <div className="ach-title">300+ DSA Problems Solved</div>
+            <div className="ach-title">500+ DSA Problems Solved</div>
             <div className="ach-sub">LeetCode · CodeChef · GFG</div>
             <div className="ach-desc">
               Strong command of data structures and algorithms in Java, built for technical interviews at scale.

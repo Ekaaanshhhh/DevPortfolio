@@ -136,7 +136,7 @@ function Navbar() {
 
   return (
     <div style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, width: "100%", ...navContainerStyle }}>
-      <div className="container" style={{ padding: "0 40px", maxWidth: "1400px", margin: "0 auto" }}>
+      <div className="container">
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "16px 0" }}>
           
           {/* Logo */}
